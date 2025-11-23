@@ -12,7 +12,7 @@ class TestMiClase(unittest.TestCase):
     def test_ObtieneValencia_numeros_mezclados(self):
         """Prueba con números que tienen dígitos pares e impares mezclados"""
         resultado = self.objeto.ObtieneValencia(1234567)
-        self.assertEqual(resultado, 4)  # Dígitos impares: 1,3,5,7
+        self.assertEqual(resultado, "a")  # Dígitos impares: 1,3,5,7
     
     def test_ObtieneValencia_todos_impares(self):
         """Prueba con números que tienen todos los dígitos impares"""
