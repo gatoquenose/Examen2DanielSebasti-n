@@ -22,4 +22,5 @@ jobs:
         run: dotnet restore
 
       - name: Run tests
-        run: dotnet test --no-build
+        run: dotnet test <ruta-a-tu-sln-o-csproj> --no-build
+
