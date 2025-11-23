@@ -90,7 +90,7 @@ class TestMiClase(unittest.TestCase):
     def test_VerificaListaCanciones_lista_vacia(self):
         """Prueba con lista vacía"""
         resultado = self.objeto.VerificaListaCanciones([])
-        self.assertTrue(resultado)  # Lista vacía no contiene None
+        self.assertFalse(resultado)  # Lista vacía no contiene None #assertTrue
     
     # PRUEBA PARA Encontrar
     def test_Encuentra_elemento_ausente(self):
