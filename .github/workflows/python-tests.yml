@@ -1,0 +1,33 @@
+name: Python Unit Tests
+
+on:
+  push:
+    branches: [ test, feature/* ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  run-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Display file structure
+      run: |
+        echo "=== Estructura de archivos ==="
+        ls -la
+        echo "=== Archivos Python ==="
+        find . -name "*.py" -type f
+        
+    - name: Run Unit Tests
+      run: |
+        echo "=== Ejecutando pruebas unitarias ==="
+        python -m unittest discover -v
