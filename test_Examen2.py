@@ -12,7 +12,7 @@ class TestMiClase(unittest.TestCase):
     def test_ObtieneValencia_numeros_mezclados(self):
         """Prueba con números que tienen dígitos pares e impares mezclados"""
         resultado = self.objeto.ObtieneValencia(1234567)
-        self.assertEqual(resultado, "a")  # Dígitos impares: 1,3,5,7  #4
+        self.assertEqual(resultado, 4)  # Dígitos impares: 1,3,5,7  #4
     
     def test_ObtieneValencia_todos_impares(self):
         """Prueba con números que tienen todos los dígitos impares"""
@@ -27,7 +27,7 @@ class TestMiClase(unittest.TestCase):
     def test_ObtieneValencia_todos_pares(self):
         """Prueba con números que tienen todos los dígitos pares"""
         resultado = self.objeto.ObtieneValencia(2468)
-        self.assertEqual(resultado, 8)  # Ningún dígito impar  #0
+        self.assertEqual(resultado, 0)  # Ningún dígito impar  #0
     
     # PRUEBAS PARA DivisibleTempo
     def test_DivisibleTempo_numero_primo(self):
@@ -54,12 +54,12 @@ class TestMiClase(unittest.TestCase):
     def test_ObtieneMasBailable_lista_normal(self):
         """Prueba con lista normal de valores"""
         resultado = self.objeto.ObtieneMasBailable([0.8, 0.9, 0.7])
-        self.assertEqual(resultado, 0.7)  #0.9
+        self.assertEqual(resultado, 0.9)  #0.9
     
     def test_ObtieneMasBailable_valores_negativos(self):
         """Prueba con lista que incluye valores negativos"""
         resultado = self.objeto.ObtieneMasBailable([-0.5, -0.1, -0.9])
-        self.assertEqual(resultado, -0.9)  # -0.1 es el mayor
+        self.assertEqual(resultado, -0.1)  # -0.1 es el mayor
     
     def test_ObtieneMasBailable_lista_un_elemento(self):
         """Prueba con lista de un solo elemento"""
@@ -85,18 +85,18 @@ class TestMiClase(unittest.TestCase):
     def test_VerificaListaCanciones_todas_none(self):
         """Prueba con lista que contiene todos los elementos None"""
         resultado = self.objeto.VerificaListaCanciones([None, None, None])
-        self.assertTrue(resultado)  #assertFalse
+        self.assertFalse(resultado) 
     
     def test_VerificaListaCanciones_lista_vacia(self):
         """Prueba con lista vacía"""
         resultado = self.objeto.VerificaListaCanciones([])
-        self.assertFalse(resultado)  # Lista vacía no contiene None   #assertFalse
+        self.assertTrue(resultado)  # Lista vacía no contiene None   
     
     # PRUEBA PARA Encontrar
     def test_Encuentra_elemento_ausente(self):
         """Prueba cuando el elemento NO está en la lista"""
         resultado = self.objeto.Encuentra(["a", "b", "c"], "x")
-        self.assertTrue(resultado)  #assertTrue
+        self.assertFalse(resultado) 
 
 if __name__ == '__main__':
     unittest.main()
