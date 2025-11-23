@@ -1,0 +1,102 @@
+import unittest
+
+from Examen2 import MiClase
+
+class TestMiClase(unittest.TestCase):
+    
+    def setUp(self):
+        """Configuración inicial para las pruebas"""
+        self.objeto = MiClase(5, 120, 12, ["Canción 1", "Canción 2", "Canción 3"], [0.8, 0.9, 0.7])
+    
+    # PRUEBAS PARA ObtieneValencia
+    def test_ObtieneValencia_numeros_mezclados(self):
+        """Prueba con números que tienen dígitos pares e impares mezclados"""
+        resultado = self.objeto.ObtieneValencia(1234567)
+        self.assertEqual(resultado, 4)  # Dígitos impares: 1,3,5,7
+    
+    def test_ObtieneValencia_todos_impares(self):
+        """Prueba con números que tienen todos los dígitos impares"""
+        resultado = self.objeto.ObtieneValencia(13579)
+        self.assertEqual(resultado, 5)  # Todos los dígitos son impares
+    
+    def test_ObtieneValencia_cero(self):
+        """Prueba con el número 0"""
+        resultado = self.objeto.ObtieneValencia(0)
+        self.assertEqual(resultado, 0)  # 0 se considera par
+    
+    def test_ObtieneValencia_todos_pares(self):
+        """Prueba con números que tienen todos los dígitos pares"""
+        resultado = self.objeto.ObtieneValencia(2468)
+        self.assertEqual(resultado, 0)  # Ningún dígito impar
+    
+    # PRUEBAS PARA DivisibleTempo
+    def test_DivisibleTempo_numero_primo(self):
+        """Prueba con un número primo"""
+        resultado = self.objeto.DivisibleTempo(7)
+        self.assertEqual(resultado, [1, 7])  # Solo divisible por 1 y sí mismo
+    
+    def test_DivisibleTempo_numero_compuesto(self):
+        """Prueba con un número compuesto"""
+        resultado = self.objeto.DivisibleTempo(12)
+        self.assertEqual(resultado, [1, 2, 3, 4, 6, 12])
+    
+    def test_DivisibleTempo_numero_uno(self):
+        """Prueba con el número 1"""
+        resultado = self.objeto.DivisibleTempo(1)
+        self.assertEqual(resultado, [1])  # Solo divisible por sí mismo
+    
+    def test_DivisibleTempo_con_cero(self):
+        """Prueba el comportamiento con el número 0"""
+        resultado = self.objeto.DivisibleTempo(0)
+        self.assertEqual(resultado, [])  # 0 no tiene divisores positivos
+    
+    # PRUEBAS PARA ObtieneMasBailable
+    def test_ObtieneMasBailable_lista_normal(self):
+        """Prueba con lista normal de valores"""
+        resultado = self.objeto.ObtieneMasBailable([0.8, 0.9, 0.7])
+        self.assertEqual(resultado, 0.9)
+    
+    def test_ObtieneMasBailable_valores_negativos(self):
+        """Prueba con lista que incluye valores negativos"""
+        resultado = self.objeto.ObtieneMasBailable([-0.5, -0.1, -0.9])
+        self.assertEqual(resultado, -0.1)  # -0.1 es el mayor
+    
+    def test_ObtieneMasBailable_lista_un_elemento(self):
+        """Prueba con lista de un solo elemento"""
+        resultado = self.objeto.ObtieneMasBailable([5.5])
+        self.assertEqual(resultado, 5.5)
+    
+    def test_ObtieneMasBailable_lista_vacia(self):
+        """Prueba con lista vacía"""
+        resultado = self.objeto.ObtieneMasBailable([])
+        self.assertIsNone(resultado)
+    
+    # PRUEBAS PARA VerificaListaCanciones
+    def test_VerificaListaCanciones_todas_validas(self):
+        """Prueba con lista que contiene todas las canciones válidas"""
+        resultado = self.objeto.VerificaListaCanciones(["Song1", "Song2", "Song3"])
+        self.assertTrue(resultado)
+    
+    def test_VerificaListaCanciones_con_none(self):
+        """Prueba con lista que contiene al menos un None"""
+        resultado = self.objeto.VerificaListaCanciones(["Song1", None, "Song3"])
+        self.assertFalse(resultado)
+    
+    def test_VerificaListaCanciones_todas_none(self):
+        """Prueba con lista que contiene todos los elementos None"""
+        resultado = self.objeto.VerificaListaCanciones([None, None, None])
+        self.assertFalse(resultado)
+    
+    def test_VerificaListaCanciones_lista_vacia(self):
+        """Prueba con lista vacía"""
+        resultado = self.objeto.VerificaListaCanciones([])
+        self.assertTrue(resultado)  # Lista vacía no contiene None
+    
+    # PRUEBA PARA Encontrar
+    def test_Encuentra_elemento_ausente(self):
+        """Prueba cuando el elemento NO está en la lista"""
+        resultado = self.objeto.Encuentra(["a", "b", "c"], "x")
+        self.assertFalse(resultado)
+
+if __name__ == '__main__':
+    unittest.main()
