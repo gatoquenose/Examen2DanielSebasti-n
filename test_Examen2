@@ -91,6 +91,12 @@ class TestMiClase(unittest.TestCase):
         """Prueba con lista vacía"""
         resultado = self.objeto.VerificaListaCanciones([])
         self.assertTrue(resultado)  # Lista vacía no contiene None
+    
+    # PRUEBA PARA Encontrar
+    def test_Encuentra_elemento_ausente(self):
+        """Prueba cuando el elemento NO está en la lista"""
+        resultado = self.objeto.Encuentra(["a", "b", "c"], "x")
+        self.assertFalse(resultado)
 
 if __name__ == '__main__':
     unittest.main()
