@@ -25,5 +25,15 @@ jobs:
           pip install -r requirements.txt || true
           pip install pytest
 
-      - name: Run tests
-        run: py -m pytest -v
+      - name: Debug - List files
+        run: |
+          echo "=== Archivos en el repositorio ==="
+          ls -la
+          echo "=== Archivos Python ==="
+          find . -name "*.py" | head -10
+
+      - name: Run tests with pytest
+        run: python -m pytest -v
+
+      - name: Run tests with unittest (backup)
+        run: python -m unittest discover -v || echo "Unittest falló, continuando..."
