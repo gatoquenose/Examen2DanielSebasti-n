@@ -42,7 +42,26 @@ class MiClase:
             if song is None:
                 return False
         return True
-
+    
+    def Encuentra(self, lista, elemento):
+        """
+        Verifica si un elemento está presente en la lista usando búsqueda manual.
+        
+        Args:
+            lista: Lista en la que buscar
+            elemento: Elemento a buscar en la lista
+            
+        Returns:
+            bool: True si el elemento está en la lista, False en caso contrario
+        """
+        if lista is None:
+            return False
+            
+        for item in lista:
+            if item == elemento:
+                return True
+        return False
+        # Simplificado sería return elemento in lista
 
 ################################################################################################
 # Ejemplo de ejecución
