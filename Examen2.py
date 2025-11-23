@@ -6,7 +6,7 @@ class MiClase:
         self.listaCanciones = listaCanciones
         self.listaBailabilidad = listaBailabilidad
 
-    def ObtieneValencia(self, numero):
+    def ObtieneValencia(self, numero): # Verifica los digitos impares de un número
         
         numero_str = str(numero)
         digitos_impares = []
@@ -17,7 +17,7 @@ class MiClase:
 
         return len(digitos_impares)
 
-    def DivisibleTempo(self, numero):
+    def DivisibleTempo(self, numero): # Obtiene divisores de la variable numero
         divisores = []
         for i in range(1, numero + 1):
             if numero % i == 0:
@@ -25,7 +25,7 @@ class MiClase:
 
         return divisores
 
-    def ObtieneMasBailable(self, lista):
+    def ObtieneMasBailable(self, lista): # Obtiene el número mayor de una lista
         if not lista:
             return None
 
@@ -37,12 +37,31 @@ class MiClase:
 
         return mayor
 
-    def VerificaListaCanciones(self, lista):
+    def VerificaListaCanciones(self, lista): # Verifica si la lista de canciones es válida, != none
         for song in lista:
             if song is None:
                 return False
         return True
-
+    
+    def Encuentra(self, lista, elemento):
+        """
+        Verifica si un elemento está presente en la lista usando búsqueda manual.
+        
+        Args:
+            lista: Lista en la que buscar
+            elemento: Elemento a buscar en la lista
+            
+        Returns:
+            bool: True si el elemento está en la lista, False en caso contrario
+        """
+        if lista is None:
+            return False
+            
+        for item in lista:
+            if item == elemento:
+                return True
+        return False
+        # Simplificado sería return elemento in lista
 
 ################################################################################################
 # Ejemplo de ejecución
